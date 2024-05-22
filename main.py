@@ -5,6 +5,7 @@ from flappybird import *
 import webbrowser
 import tkinter.messagebox as messagebox
 
+
 def start_bubble_sort():
     root.destroy()   
     BubbleSort()
