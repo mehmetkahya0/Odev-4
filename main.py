@@ -3,6 +3,7 @@ from bubble import BubbleSort
 from tkinter import Frame
 from flappybird import *
 import webbrowser
+import tkinter.messagebox as messagebox
 
 def start_bubble_sort():
     root.destroy()   
@@ -14,12 +15,35 @@ def start_flappy_bird():
 
 def open_webpage():
     webbrowser.open('https://github.com/mehmetkahya0', new=2)  # Open the web page in a new tab
+# Create a new function to show an "About" window
+def show_about():
+    messagebox.showinfo("Hakkında", "Bu uygulama, Mehmet Kahya - 230603035 tarafından 23 Mayıs 2024 tarihinde oluşturulmuştur ve Proje seçmek için kullanılmaktadır.")
 
+# Create a new function to exit the application
+def exit_app():
+    root.destroy()
+    
 root = tk.Tk()
 root.title("Home GUI")
 root.geometry("500x300")
 root.configure(bg='#0531a8')
 root.resizable(False, False)   
+
+# Create a new menu bar
+menu_bar = tk.Menu(root)
+
+# Create a "File" menu and add it to the menu bar
+file_menu = tk.Menu(menu_bar, tearoff=0)
+file_menu.add_command(label="Çıkış", command=exit_app)
+menu_bar.add_cascade(label="Dosya", menu=file_menu)
+
+# Create a "Help" menu and add it to the menu bar
+help_menu = tk.Menu(menu_bar, tearoff=0)
+help_menu.add_command(label="Hakkında", command=show_about)
+menu_bar.add_cascade(label="Yardım", menu=help_menu)
+
+# Set the root window's menu bar
+root.config(menu=menu_bar)
 
 space = tk.Label(root, text="",bg='#0531a8', fg='whitesmoke')
 space.pack()
